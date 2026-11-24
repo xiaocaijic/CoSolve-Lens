@@ -1,0 +1,26 @@
+{
+  "name": "cosolve-lens",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test:e2e": "node tests/browser.mjs",
+    "test:desktop": "node tests/desktop.mjs",
+    "test:studychat": "node tests/studychat.mjs",
+    "test:analysis": "node tests/analysis-flow.mjs",
+    "test:showcase": "node tests/showcase.mjs"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.52.0",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5",
+    "typescript": "5.8.3",
+    "vite": "6.3.5"
+  }
+}

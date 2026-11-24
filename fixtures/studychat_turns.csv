@@ -1,0 +1,3 @@
+learner,assignment,conversation,speaker,message,turn,tag,assignment_score
+example-a,course-task,example-session,user,退款要保留吗？,1,clarification,86
+example-a,course-task,example-session,assistant,请根据任务说明保留退款。,2,suggestion,86

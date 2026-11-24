@@ -1,0 +1,8 @@
+order_id,date,item,amount,status
+001,2026-01-03,notebook,28.00,sale
+001,2026-01-03,notebook,28.00,sale
+002,2026-01-15,notebook,-8.00,refund
+003,2026-01-21,pen,,sale
+004,2026-02-30,bottle,32.00,sale
+005,2026-02-10,bag,54.00,sale
+006,2026-02-11,bag,-14.00,refund

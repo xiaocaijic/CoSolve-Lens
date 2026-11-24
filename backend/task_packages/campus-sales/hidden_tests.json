@@ -1,0 +1,5 @@
+[
+  {"id":"invalid_date","discard_orders":["004"]},
+  {"id":"missing_amount","discard_orders":["003"]},
+  {"id":"signed_monthly_net","expected":{"2026-01":"20.00","2026-02":"40.00"}}
+]

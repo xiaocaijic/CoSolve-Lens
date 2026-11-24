@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "name": "工程验收样例",
+    "license_note": "合成演示记录"
+  },
+  "sessions": [
+    {
+      "external_session_id": "F4",
+      "participant_key": "demo-f4",
+      "task": {
+        "external_task_id": "clean-sales-v1",
+        "title": "校园商店销售数据清洗与分析",
+        "instructions": "读取订单 CSV，校验必填值和日期，按订单号去重，保留退款并计算月净销售额，提交脚本、清洗数据、趋势图和说明。"
+      },
+      "events": [
+        {
+          "external_event_id": "r4a",
+          "sequence_no": 1,
+          "occurred_at": null,
+          "type": "run_finished",
+          "payload": {
+            "artifact_id": "code-v1",
+            "artifact_version": 1,
+            "artifact_checksum": "fe19635cb3c6b18acff48425fadcab020bde06e6e0db5df23e9a375fa2c058e2",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "exit_code": 1,
+            "stdout": "",
+            "stderr": "KeyError: amount"
+          }
+        },
+        {
+          "external_event_id": "u4a",
+          "sequence_no": 2,
+          "occurred_at": null,
+          "type": "chat_user_message",
+          "payload": {
+            "text": "KeyError: amount"
+          }
+        },
+        {
+          "external_event_id": "a4a",
+          "sequence_no": 3,
+          "occurred_at": null,
+          "type": "chat_ai_message",
+          "payload": {
+            "text": "请核对 CSV 表头。"
+          }
+        },
+        {
+          "external_event_id": "c4a",
+          "sequence_no": 4,
+          "occurred_at": null,
+          "type": "code_snapshot",
+          "payload": {
+            "language": "python",
+            "content": "# F4 fixture: change display title\n",
+            "version": 2,
+            "artifact_checksum": "163c205ccfd963a720b790c1f9ccaac19e5f7d0334579ee4d7547c35fbb43046"
+          }
+        },
+        {
+          "external_event_id": "r4b",
+          "sequence_no": 5,
+          "occurred_at": null,
+          "type": "run_finished",
+          "payload": {
+            "artifact_id": "code-v2",
+            "artifact_version": 2,
+            "artifact_checksum": "163c205ccfd963a720b790c1f9ccaac19e5f7d0334579ee4d7547c35fbb43046",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "exit_code": 1,
+            "stdout": "",
+            "stderr": "KeyError: amount"
+          }
+        },
+        {
+          "external_event_id": "u4b",
+          "sequence_no": 6,
+          "occurred_at": null,
+          "type": "chat_user_message",
+          "payload": {
+            "text": "KeyError: amount"
+          }
+        },
+        {
+          "external_event_id": "s4",
+          "sequence_no": 7,
+          "occurred_at": null,
+          "type": "submission_created",
+          "payload": {
+            "artifact_refs": [
+              "code-v2",
+              "cleaned_data",
+              "trend",
+              "statement"
+            ],
+            "artifact_checksum": "163c205ccfd963a720b790c1f9ccaac19e5f7d0334579ee4d7547c35fbb43046",
+            "statement": "仍存在字段报错。"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "external_artifact_id": "code-v1",
+          "kind": "code",
+          "version": 1,
+          "content": "# F4 fixture: initial run\n",
+          "mime_type": "text/x-python"
+        },
+        {
+          "external_artifact_id": "code-v2",
+          "kind": "code",
+          "version": 2,
+          "content": "# F4 fixture: change display title\n",
+          "mime_type": "text/x-python"
+        },
+        {
+          "external_artifact_id": "cleaned_data",
+          "kind": "cleaned_data",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "trend",
+          "kind": "trend",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "statement",
+          "kind": "statement",
+          "version": 1,
+          "content": "仍存在字段报错。",
+          "mime_type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

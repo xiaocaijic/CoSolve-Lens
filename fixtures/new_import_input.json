@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "name": "新数据入口验收",
+    "license_note": "项目自制合成数据 · CC BY 4.0"
+  },
+  "sessions": [
+    {
+      "external_session_id": "IMPORT-NEW-2026",
+      "participant_key": "import-acceptance-user",
+      "task": {
+        "external_task_id": "station-demand-v1",
+        "title": "站点需求汇总入口验收",
+        "instructions": "按站点和时段汇总需求，保留缺失记录的处理说明，提交脚本、汇总表和核对结论。"
+      },
+      "events": [
+        {
+          "external_event_id": "u1",
+          "sequence_no": 1,
+          "occurred_at": null,
+          "type": "chat_user_message",
+          "payload": {"text": "我先手算 North 站两个时段的总数，再与程序输出对照。"}
+        },
+        {
+          "external_event_id": "c1",
+          "sequence_no": 2,
+          "occurred_at": null,
+          "type": "code_snapshot",
+          "payload": {
+            "language": "python",
+            "content": "# new import fixture: aggregate station demand\n",
+            "version": 1,
+            "artifact_checksum": "d3d0468e19e34a7c5db0722f170ff463758b9ac2ef8b47da204f2d0f5459ecc0"
+          }
+        },
+        {
+          "external_event_id": "r1",
+          "sequence_no": 3,
+          "occurred_at": null,
+          "type": "run_finished",
+          "payload": {
+            "artifact_id": "code-v1",
+            "artifact_version": 1,
+            "artifact_checksum": "d3d0468e19e34a7c5db0722f170ff463758b9ac2ef8b47da204f2d0f5459ecc0",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "exit_code": 0,
+            "stdout": "North,110",
+            "stderr": ""
+          }
+        },
+        {
+          "external_event_id": "t1",
+          "sequence_no": 4,
+          "occurred_at": null,
+          "type": "test_finished",
+          "payload": {
+            "artifact_id": "code-v1",
+            "artifact_version": 1,
+            "artifact_checksum": "d3d0468e19e34a7c5db0722f170ff463758b9ac2ef8b47da204f2d0f5459ecc0",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "passed": 2,
+            "failed": 0,
+            "cases": [
+              {"id": "aggregate", "passed": true, "category": "main"},
+              {"id": "missing", "passed": true, "category": "boundary"}
+            ]
+          }
+        },
+        {
+          "external_event_id": "s1",
+          "sequence_no": 5,
+          "occurred_at": null,
+          "type": "submission_created",
+          "payload": {
+            "artifact_refs": ["code-v1", "summary", "statement"],
+            "artifact_checksum": "d3d0468e19e34a7c5db0722f170ff463758b9ac2ef8b47da204f2d0f5459ecc0",
+            "statement": "手算结果与程序输出一致，缺失需求保留为待核对。"
+          }
+        }
+      ],
+      "artifacts": [
+        {"external_artifact_id": "code-v1", "kind": "code", "version": 1,
+         "content": "# new import fixture: aggregate station demand\n", "mime_type": "text/x-python"},
+        {"external_artifact_id": "summary", "kind": "cleaned_data", "version": 1,
+         "content": "station,total\nNorth,110\n", "mime_type": "text/csv"},
+        {"external_artifact_id": "statement", "kind": "statement", "version": 1,
+         "content": "手算结果与程序输出一致，缺失需求保留为待核对。", "mime_type": "text/plain"}
+      ]
+    }
+  ]
+}

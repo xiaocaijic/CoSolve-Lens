@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "name": "工程验收样例",
+    "license_note": "合成演示记录"
+  },
+  "sessions": [
+    {
+      "external_session_id": "F5",
+      "participant_key": "demo-f5",
+      "task": {
+        "external_task_id": "clean-sales-v1",
+        "title": "校园商店销售数据清洗与分析",
+        "instructions": "读取订单 CSV，校验必填值和日期，按订单号去重，保留退款并计算月净销售额，提交脚本、清洗数据、趋势图和说明。"
+      },
+      "events": [
+        {
+          "external_event_id": "a5",
+          "sequence_no": 1,
+          "occurred_at": null,
+          "type": "chat_ai_message",
+          "payload": {
+            "text": "建议把所有负金额记录删除。"
+          }
+        },
+        {
+          "external_event_id": "c5a",
+          "sequence_no": 2,
+          "occurred_at": null,
+          "type": "code_snapshot",
+          "payload": {
+            "language": "python",
+            "content": "# F5 fixture: discard negative amounts\n",
+            "version": 1,
+            "artifact_checksum": "a31609d71b76b30eee2ec3940ad40937a9d5d8b25f5ebfc10f242c3c779d233b"
+          }
+        },
+        {
+          "external_event_id": "t5a",
+          "sequence_no": 3,
+          "occurred_at": null,
+          "type": "test_finished",
+          "payload": {
+            "artifact_id": "code-v1",
+            "artifact_version": 1,
+            "artifact_checksum": "a31609d71b76b30eee2ec3940ad40937a9d5d8b25f5ebfc10f242c3c779d233b",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "passed": 0,
+            "failed": 1,
+            "cases": [
+              {
+                "id": "main",
+                "passed": false,
+                "category": "main"
+              }
+            ]
+          }
+        },
+        {
+          "external_event_id": "u5",
+          "sequence_no": 4,
+          "occurred_at": null,
+          "type": "chat_user_message",
+          "payload": {
+            "text": "负金额包含必须保留的退款。按订单状态保留退款，再根据日期汇总。"
+          }
+        },
+        {
+          "external_event_id": "c5b",
+          "sequence_no": 5,
+          "occurred_at": null,
+          "type": "code_snapshot",
+          "payload": {
+            "language": "python",
+            "content": "# F5 fixture: retain refunds\n",
+            "version": 2,
+            "artifact_checksum": "1508e6dd0f025c2d9605fdac269cbcab18456937e1afff5daf046b666ab87143"
+          }
+        },
+        {
+          "external_event_id": "t5b",
+          "sequence_no": 6,
+          "occurred_at": null,
+          "type": "test_finished",
+          "payload": {
+            "artifact_id": "code-v2",
+            "artifact_version": 2,
+            "artifact_checksum": "1508e6dd0f025c2d9605fdac269cbcab18456937e1afff5daf046b666ab87143",
+            "execution_mode": "sandbox",
+            "synthetic": false,
+            "verified": true,
+            "passed": 2,
+            "failed": 0,
+            "cases": [
+              {
+                "id": "main",
+                "passed": true,
+                "category": "main"
+              },
+              {
+                "id": "refund-boundary",
+                "passed": true,
+                "category": "boundary"
+              }
+            ]
+          }
+        },
+        {
+          "external_event_id": "s5",
+          "sequence_no": 7,
+          "occurred_at": null,
+          "type": "submission_created",
+          "payload": {
+            "artifact_refs": [
+              "code-v2",
+              "cleaned_data",
+              "trend",
+              "statement"
+            ],
+            "artifact_checksum": "1508e6dd0f025c2d9605fdac269cbcab18456937e1afff5daf046b666ab87143",
+            "statement": "纠正负值过滤规则并验证边界。"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "external_artifact_id": "code-v1",
+          "kind": "code",
+          "version": 1,
+          "content": "# F5 fixture: discard negative amounts\n",
+          "mime_type": "text/x-python"
+        },
+        {
+          "external_artifact_id": "code-v2",
+          "kind": "code",
+          "version": 2,
+          "content": "# F5 fixture: retain refunds\n",
+          "mime_type": "text/x-python"
+        },
+        {
+          "external_artifact_id": "cleaned_data",
+          "kind": "cleaned_data",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "trend",
+          "kind": "trend",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "statement",
+          "kind": "statement",
+          "version": 1,
+          "content": "纠正负值过滤规则并验证边界。",
+          "mime_type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

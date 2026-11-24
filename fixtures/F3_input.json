@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "name": "工程验收样例",
+    "license_note": "合成演示记录"
+  },
+  "sessions": [
+    {
+      "external_session_id": "F3",
+      "participant_key": "demo-f3",
+      "task": {
+        "external_task_id": "clean-sales-v1",
+        "title": "校园商店销售数据清洗与分析",
+        "instructions": "读取订单 CSV，校验必填值和日期，按订单号去重，保留退款并计算月净销售额，提交脚本、清洗数据、趋势图和说明。"
+      },
+      "events": [
+        {
+          "external_event_id": "u3",
+          "sequence_no": 1,
+          "occurred_at": null,
+          "type": "chat_user_message",
+          "payload": {
+            "text": "把完整答案给我。"
+          }
+        },
+        {
+          "external_event_id": "a3",
+          "sequence_no": 2,
+          "occurred_at": null,
+          "type": "chat_ai_message",
+          "payload": {
+            "text": "读取订单并聚合。"
+          }
+        },
+        {
+          "external_event_id": "c3",
+          "sequence_no": 3,
+          "occurred_at": null,
+          "type": "code_snapshot",
+          "payload": {
+            "language": "python",
+            "content": "# F3 fixture: aggregate orders\n",
+            "version": 1,
+            "artifact_checksum": "8b8b63c7f9f588c202c6fa3710bc3749b32fac3414a9fcc0f1546363eba3843f"
+          }
+        },
+        {
+          "external_event_id": "s3",
+          "sequence_no": 4,
+          "occurred_at": null,
+          "type": "submission_created",
+          "payload": {
+            "artifact_refs": [
+              "code-v1",
+              "cleaned_data",
+              "trend",
+              "statement"
+            ],
+            "artifact_checksum": "8b8b63c7f9f588c202c6fa3710bc3749b32fac3414a9fcc0f1546363eba3843f",
+            "statement": "已粘贴方案。"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "external_artifact_id": "code-v1",
+          "kind": "code",
+          "version": 1,
+          "content": "# F3 fixture: aggregate orders\n",
+          "mime_type": "text/x-python"
+        },
+        {
+          "external_artifact_id": "cleaned_data",
+          "kind": "cleaned_data",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "trend",
+          "kind": "trend",
+          "version": 1,
+          "content": "month,net\n2026-01,20\n",
+          "mime_type": "text/csv"
+        },
+        {
+          "external_artifact_id": "statement",
+          "kind": "statement",
+          "version": 1,
+          "content": "已粘贴方案。",
+          "mime_type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

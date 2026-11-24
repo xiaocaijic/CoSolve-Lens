@@ -1,0 +1,15 @@
+{
+  "courses": ["CS101", "CS102", "CS201", "CS220", "CS301", "CS399"],
+  "edges": [
+    ["CS101", "CS102"],
+    ["CS102", "CS201"],
+    ["CS102", "CS220"],
+    ["CS201", "CS301"],
+    ["CS220", "CS301"],
+    ["CS301", "CS399"]
+  ],
+  "boundary_cases": {
+    "cycle_candidate": ["CS399", "CS101"],
+    "missing_course": "CS999"
+  }
+}

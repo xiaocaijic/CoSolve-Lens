@@ -1,0 +1,10 @@
+{
+  "slots": ["Tue-18", "Wed-18", "Thu-19"],
+  "rooms": ["R101", "R202"],
+  "activities": [
+    {"id": "robotics", "slots": ["Tue-18", "Wed-18"], "advisor": "A", "room": "R101"},
+    {"id": "debate", "slots": ["Tue-18", "Thu-19"], "advisor": "B", "room": "R101"},
+    {"id": "music", "slots": ["Wed-18"], "advisor": "A", "room": "R202"},
+    {"id": "volunteer", "slots": ["Tue-18", "Wed-18"], "advisor": "C", "room": "R202"}
+  ]
+}

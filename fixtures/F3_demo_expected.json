@@ -1,0 +1,55 @@
+{
+  "dimensions": [
+    {
+      "dimension": "organization",
+      "level": 1,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "u3"
+      ]
+    },
+    {
+      "dimension": "verification",
+      "level": 0,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "c3",
+        "s3"
+      ]
+    },
+    {
+      "dimension": "diagnosis",
+      "level": null,
+      "state": "not_applicable",
+      "reason": "NO_DIAGNOSTIC_EVENT",
+      "event_keys": []
+    },
+    {
+      "dimension": "ai_integration",
+      "level": 1,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "a3",
+        "c3"
+      ]
+    }
+  ],
+  "outcome_items": [
+    38,
+    13,
+    11,
+    8
+  ],
+  "outcome_score": 70,
+  "process_score": 22.2,
+  "diagnosis": "过程与成果均需支持",
+  "ui": {
+    "demo_badge": "模拟证据，仅用于工程演示",
+    "evidence_links": true,
+    "shows_na": true,
+    "shows_zero": true
+  }
+}

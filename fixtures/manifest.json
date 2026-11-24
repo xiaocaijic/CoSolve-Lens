@@ -1,0 +1,26 @@
+{
+  "files": {
+    "F1_demo_expected.json": "0c6013882d792fe3a9bf956a21c1548b093fa001ca5aa3529d48d784fcf9e260",
+    "F1_input.json": "bf6d1ad30c123d65243be4eecb3ab54e51bf05def9c7bad25dcd934d4b0fdacb",
+    "F1_rules_expected.json": "abfa7b843e31b03daffa9174eb5ee436390ea8ad57af0be38079a7ce33e69530",
+    "F2_demo_expected.json": "341cc021e4e73d6394833d38ffedc030ebddf405630fd2b818353d600ee7f9a4",
+    "F2_input.json": "24a8f5234bf67e8db9236b515b3b4061b4714b3ec6452af572e156642faf613d",
+    "F2_rules_expected.json": "797b7ce87df7587919af3868dba2cb341dc20c2194df88ed43d1ae8433709e57",
+    "F3_demo_expected.json": "974dd3529cd8874686edd39043af9bea37475411dcb1951b968ea40e4b2f43c2",
+    "F3_input.json": "9966e9b0f06b5e429d7cf16a86015f919cb38285e8a568d43d283e64efa31f76",
+    "F3_rules_expected.json": "d75bea171d41c621fe2c166d48a77a9c0395a9294d7c25448413e92283d73aea",
+    "F4_demo_expected.json": "541c9135b05d405cd4771c022f6863694c015b5021cfc2cde7f377dafc8ecc7c",
+    "F4_input.json": "6be8e422e74c1ea38f8e0a538a4d6c7819320a88474db541ed789438902e0827",
+    "F4_rules_expected.json": "10e7a7c8aa2b4734f9527fff5dde80eb98d3045fe1c21696aa709bef45047c1c",
+    "F5C_initial_expected.json": "e2e1eb3d861005bdb94d5f2a1a42c7518d16a2dfb50fe727d7bdd07253e94bb1",
+    "F5C_input.json": "ebc8bf39e9b4eec99eb0a651edf7d00e0fbb5508dce51e40c78781c6c87c6eab",
+    "F5C_reviewed_expected.json": "b1baec521d4f750b5df9de95eb097a8f4c901e9503f7858a2b1591988dc774d4",
+    "F5_demo_expected.json": "b1baec521d4f750b5df9de95eb097a8f4c901e9503f7858a2b1591988dc774d4",
+    "F5_input.json": "ebc8bf39e9b4eec99eb0a651edf7d00e0fbb5508dce51e40c78781c6c87c6eab",
+    "F5_rules_expected.json": "b1353ff979182e7057c7ee0b827026ee6799dfe562fd4d28e68438babe37a6a4",
+    "F6_demo_expected.json": "1b9c797b14daebf429e0e2711dd13ec038629be2b53586b17935206131731494",
+    "F6_input.json": "0242ef3d50e5d1e885e72f180f8dfdc0de68b9cea58899f97d45a7440b05f3b4",
+    "F6_rules_expected.json": "154a6190b64b5acd1ed8bf61091ce0dc77f0ab65a74d84922e5d6fdb8e5a50cf"
+  },
+  "fixture_version": "1.0"
+}

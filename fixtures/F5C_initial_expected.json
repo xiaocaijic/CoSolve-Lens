@@ -1,0 +1,69 @@
+{
+  "dimensions": [
+    {
+      "dimension": "organization",
+      "level": 2,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "u5"
+      ]
+    },
+    {
+      "dimension": "verification",
+      "level": null,
+      "state": "insufficient_evidence",
+      "reason": "CONFLICTING_RECORDS",
+      "event_keys": []
+    },
+    {
+      "dimension": "diagnosis",
+      "level": 3,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "t5a",
+        "u5",
+        "c5b",
+        "t5b"
+      ]
+    },
+    {
+      "dimension": "ai_integration",
+      "level": 3,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "a5",
+        "c5a",
+        "u5",
+        "c5b",
+        "t5b"
+      ]
+    }
+  ],
+  "outcome_items": [
+    45,
+    17,
+    12,
+    11
+  ],
+  "outcome_score": 85,
+  "process_score": null,
+  "diagnosis": null,
+  "ui": {
+    "demo_badge": "模拟证据，仅用于工程演示",
+    "evidence_links": true,
+    "shows_na": false,
+    "shows_zero": false
+  },
+  "conflict": {
+    "claim_evidence": [
+      "t5a"
+    ],
+    "rule_evidence": [
+      "t5b",
+      "s5"
+    ]
+  }
+}

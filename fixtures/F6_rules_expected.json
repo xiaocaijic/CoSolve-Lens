@@ -1,0 +1,30 @@
+{
+  "dimensions": [
+    {
+      "dimension": "organization",
+      "state": "insufficient_evidence",
+      "level": null
+    },
+    {
+      "dimension": "verification",
+      "state": "scored",
+      "level": 2,
+      "event_keys": [
+        "t6",
+        "s6"
+      ]
+    },
+    {
+      "dimension": "diagnosis",
+      "state": "insufficient_evidence",
+      "level": null
+    },
+    {
+      "dimension": "ai_integration",
+      "state": "insufficient_evidence",
+      "level": null
+    }
+  ],
+  "process_score": null,
+  "diagnosis": null
+}

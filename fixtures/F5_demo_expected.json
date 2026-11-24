@@ -1,0 +1,64 @@
+{
+  "dimensions": [
+    {
+      "dimension": "organization",
+      "level": 2,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "u5"
+      ]
+    },
+    {
+      "dimension": "verification",
+      "level": 3,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "t5a",
+        "t5b",
+        "s5"
+      ]
+    },
+    {
+      "dimension": "diagnosis",
+      "level": 3,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "t5a",
+        "u5",
+        "c5b",
+        "t5b"
+      ]
+    },
+    {
+      "dimension": "ai_integration",
+      "level": 3,
+      "state": "scored",
+      "reason": null,
+      "event_keys": [
+        "a5",
+        "c5a",
+        "u5",
+        "c5b",
+        "t5b"
+      ]
+    }
+  ],
+  "outcome_items": [
+    45,
+    17,
+    12,
+    11
+  ],
+  "outcome_score": 85,
+  "process_score": 91.7,
+  "diagnosis": "过程与成果均达标",
+  "ui": {
+    "demo_badge": "模拟证据，仅用于工程演示",
+    "evidence_links": true,
+    "shows_na": false,
+    "shows_zero": false
+  }
+}

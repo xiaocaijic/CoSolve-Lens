@@ -1,0 +1,5 @@
+[
+  {"id":"unique_orders","description":"清洗结果中的订单号唯一。"},
+  {"id":"refund_kept","description":"保留 002 与 006 两条退款记录。"},
+  {"id":"monthly_net","description":"净销售额以合法记录和退款的有符号金额计算。"}
+]

@@ -1,0 +1,6 @@
+[
+  {"item_id":"function","title":"核心功能和测试","required":true,"max_score":50},
+  {"item_id":"constraints","title":"任务限制满足情况","required":true,"max_score":20},
+  {"item_id":"quality","title":"交付质量","required":true,"max_score":15},
+  {"item_id":"explanation","title":"做法和局限说明","required":true,"max_score":15}
+]
