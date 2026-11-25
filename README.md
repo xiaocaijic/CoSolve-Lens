@@ -10,7 +10,7 @@
 系统使用 React + TypeScript 前端、FastAPI 后端和 SQLite 本地数据库。默认为 Windows 本机演示模式，不需要云服务即可运行规则评价、演示任务和合成数据流程。
 
 > [!IMPORTANT]
-> 当前是本地教学／研究原型，没有生产身份认证，不得直接暴露到公网。代码按根目录 MIT License 开源；真实学生数据、StudyChat 会话及第三方课程材料不因代码许可证而自动获得公开授权。
+> 当前是本地教学／研究原型，没有生产身份认证，不得直接暴露到公网。协作仓库包含课程使用的 StudyChat 快照、报告数据库压缩包和假名映射文件，但不包含 DeepSeek API Key、浏览器 Cookie 或本机登录凭据。
 
 ### 公开干净克隆与本机研究实例的差别
 
@@ -19,11 +19,11 @@
 | 10 个学生任务与本地材料 | 有 | 有 |
 | 合成 Demo 与 Canonical JSON 导入 | 有 | 有 |
 | 规则评价、复核和导出 | 有 | 有 |
-| 12 个 StudyChat 精选案例 | 默认为空，需授权快照 | 可有 |
-| 8 份 StudyChat 正式报告 | 不包含本地数据库，默认不显示 | 可有 |
+| 12 个 StudyChat 精选案例 | 有 | 有 |
+| 8 份 StudyChat 正式报告 | 有 | 有 |
 | DeepSeek 真实评价 | 默认关闭，需 Key 和授权 | 可选配置 |
 
-新用户在干净克隆中的正常首启结果是：学生任务库有 10 个任务，StudyChat 精选库可能为空，但通用 JSON 导入和合成 Demo 可完整运行。
+新用户运行 `scripts/setup.ps1` 后会自动恢复协作数据库和假名映射文件。正常首启结果是：10 个学生任务、12 个精选案例、8 份正式报告和 4 份课堂证据讲评均可见。
 
 文档对应应用版本 `0.1.0`，最后验收日期为 2026-11-24；验收环境为 Windows、Python 3.12.4、Node.js 24.22.3 和 Microsoft Edge。
 
@@ -142,9 +142,9 @@ Copy-Item .env.example .env
 .\scripts\setup.ps1
 ```
 
-`setup.ps1` 会创建 `.venv`，安装 Python 依赖，并在 `frontend/` 执行 `npm ci`。
+`setup.ps1` 会校验并恢复 `data/collaboration-app.sqlite3.gz`，创建 `.venv` 并安装 Python 依赖。仓库已包含预构建前端和三个登录器，普通协作者首次运行不需要 Node.js；开发者可使用 `-BuildFrontend` 安装前端依赖。
 
-### 2. 构建前端和三个登录器
+### 2. 可选：重新构建前端和三个登录器
 
 ```powershell
 .\scripts\build-desktop.ps1
@@ -392,13 +392,9 @@ $box.sessions | ForEach-Object { $_ | ConvertTo-Json -Depth 100 -Compress } |
 
 ## StudyChat 数据
 
-StudyChat 不是运行系统的必需条件。没有 StudyChat 快照时，仍然可以使用学生任务、演示集、通用 JSON / JSONL 导入和规则评价。
+协作仓库包含 StudyChat 规范化快照、来源索引、精选目录和当前报告数据库压缩包。`scripts/setup.ps1` 会在本地没有 `var/app.sqlite3` 时自动恢复，已有数据库不会被覆盖。
 
-为防止误发布研究数据，以下文件默认被 `.gitignore` 排除：
-
-- `data/StudyChat/`
-- `data/studychat-v1.1.snapshot.jsonl.gz`
-- `var/` 中的数据库、假名密钥、审计与浏览器配置
+DeepSeek API Key、`.env`、DPAPI 密钥文件、浏览器 Cookie、服务停止令牌和日志仍不进入 Git。
 
 如果你对 StudyChat v1.1 有独立的合法访问权，可以设置：
 
@@ -517,13 +513,13 @@ frontend/
   tests/                Playwright / Edge 浏览器验收
 scripts/                安装、启动、构建、验收与 StudyChat 工具
 tests/                  后端与评价引擎测试
-var/                    运行数据、SQLite、密钥、日志和浏览器配置（不入 Git）
+var/                    setup 后恢复的 SQLite、密钥、日志和浏览器配置（运行目录）
 ```
 
 ## 数据与安全边界
 
-- SQLite 数据库、导入正文、报告证据、本地 Key 和浏览器配置都在 `var/`，不应提交到 Git。
-- `.env`、StudyChat 原始数据和打包快照默认不入 Git。
+- 协作数据库以 `data/collaboration-app.sqlite3.gz` 形式提交，setup 后恢复到 `var/app.sqlite3`。
+- DeepSeek API Key、`.env`、DPAPI 文件、浏览器 Cookie、服务日志和停止令牌不入 Git。
 - 结构化来源标识在导入时用 HMAC 生成假名。数据库和对应假名密钥必须一起备份。
 - 外部模型只发送已授权范围内的白名单字段。StudyChat 还要求逐会话授权、质量门控和管理员当次确认。
 - 本机外发前会阻止疑似 API Key、Token、密码和私钥。
@@ -559,7 +555,7 @@ var/                    运行数据、SQLite、密钥、日志和浏览器配�
 
 ### StudyChat 精选库为空
 
-新克隆的开源代码库默认不包含 StudyChat 快照和本地报告数据。请使用通用 JSON 示例验证系统，或在获得授权后配置 `AI_COLLAB_STUDYCHAT_ROOT`并导入快照。
+确认已经运行 `scripts/setup.ps1`，并检查 `var/app.sqlite3` 与 `var/app.pseudonym-key` 是否存在。若恢复中断，可删除未完成的 `var/app.sqlite3.restore.tmp` 后重新运行 setup。
 
 ### DeepSeek 不可用
 
@@ -578,9 +574,9 @@ var/                    运行数据、SQLite、密钥、日志和浏览器配�
 - [x] 根目录已添加 MIT `LICENSE`。
 - [ ] 确认所有代码贡献者同意所选许可证。
 - [ ] 保留三个 StudyChat 任务包中的原作者、课程和 CC BY 4.0 归属。
-- [ ] 不提交 `.env`、`var/`、SQLite 文件、DPAPI 凭据、浏览器配置、StudyChat 原始数据、快照或来源索引。
-- [ ] 在新的空目录中重新 clone，只使用合成 fixtures 完成安装、构建和 6 个 E2E 场景。
-- [ ] 如发布预编译 EXE，放在 Release 附件中，不要把本机构建物当作源码提交。
+- [x] 不提交 `.env`、DeepSeek DPAPI 文件、浏览器 Cookie、服务令牌或日志。
+- [x] 协作数据库使用压缩包和 SHA-256 校验，首次 setup 自动恢复。
+- [x] 仓库包含预构建前端与三个登录器，另生成完整 Windows Release。
 - [x] 已补充 `SECURITY.md`、`CONTRIBUTING.md` 和公开版研究数据边界。
 
 预检只检查 Git 已跟踪或已暂存的文件，因此顺序不能颠倒。先在一个不含真实数据的新目录中复制允许公开的源码，添加许可证并暂存，再运行预检和人工复核，最后才提交：
@@ -592,21 +588,20 @@ git add README.md LICENSE .gitignore .env.example pytest.ini CONTRIBUTING.md SEC
 .\scripts\preflight-open-source.ps1
 git status --short
 git diff --cached --name-only
-# 人工确认清单没有真实学生数据、密钥、数据库、EXE 或浏览器配置后再提交
+# 人工确认清单没有 API Key、浏览器凭据、服务令牌或日志后再提交
 git commit -m "Initial open-source release"
 ```
 
-脚本会检查根 `LICENSE`、Git 已跟踪文件中的 `.env`、`var/`、SQLite、EXE、StudyChat 快照，并只输出疑似秘密所在的文件名、不输出匹配正文。它不能代替对已有 Git 历史的专业秘密和大文件扫描。
+脚本会检查根 `LICENSE`、Git 已跟踪文件中的 `.env`、运行目录、DPAPI 文件、浏览器资料和疑似秘密，并只输出文件名、不输出匹配正文。明确允许的协作数据库压缩包和 StudyChat 快照会保留。
 
 如果现有工作目录曾经存在真实学生数据或密钥，建议新建一个空 Git 项目，按允许清单复制源码和合成 fixtures，不要直接携带旧 Git 历史。
 
 ### 建议的首次发布内容
 
 - 应用源码、数据库迁移和任务包。
-- 合成 fixtures 和 Canonical JSON 示例。
+- 合成 fixtures、Canonical JSON 示例、协作数据库压缩包和 StudyChat 快照。
 - `.env.example`、本 README 和完整测试。
-- 不含任何真实学生数据的截图或演示视频。
-- 一个独立的合成数据 Release，便于试用者直接验证导入。
+- 预构建前端、三个 Windows 登录器和完整协作状态 Release。
 
 ## 许可证与第三方内容
 

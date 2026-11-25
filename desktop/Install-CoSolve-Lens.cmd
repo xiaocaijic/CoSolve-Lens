@@ -3,7 +3,7 @@ setlocal
 chcp 65001 >nul
 cd /d "%~dp0"
 
-if exist ".venv\Scripts\python.exe" goto ready
+if exist ".venv\Scripts\python.exe" goto restore
 
 py -3 --version >nul 2>&1
 if %errorlevel%==0 goto use_py
@@ -25,6 +25,10 @@ python -m venv .venv
 :install
 if errorlevel 1 goto failed
 ".venv\Scripts\python.exe" -m pip install --disable-pip-version-check -r backend\requirements.txt
+if errorlevel 1 goto failed
+
+:restore
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\restore-collaboration-state.ps1
 if errorlevel 1 goto failed
 
 :ready

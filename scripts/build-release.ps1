@@ -30,6 +30,8 @@ foreach ($name in @('README.md','LICENSE','.env.example','教师登录.exe','学
 
 Copy-Item -LiteralPath 'desktop/Install-CoSolve-Lens.cmd' -Destination $bundle
 Copy-Item -LiteralPath 'desktop/README-WINDOWS.txt' -Destination $bundle
+New-Item -ItemType Directory -Path (Join-Path $bundle 'scripts') | Out-Null
+Copy-Item -LiteralPath 'scripts/restore-collaboration-state.ps1' -Destination (Join-Path $bundle 'scripts')
 
 New-Item -ItemType Directory -Path (Join-Path $bundle 'backend') | Out-Null
 foreach ($name in @('app','migrations','task_packages','requirements.txt')) {
@@ -43,8 +45,15 @@ New-Item -ItemType Directory -Path (Join-Path $bundle 'fixtures') | Out-Null
 Get-ChildItem -LiteralPath (Join-Path $root 'fixtures') | Copy-Item -Destination (Join-Path $bundle 'fixtures') -Recurse
 
 $data = New-Item -ItemType Directory -Path (Join-Path $bundle 'data')
-[IO.File]::WriteAllText((Join-Path $data 'studychat-showcase-v1.json'), "[]`n", [Text.UTF8Encoding]::new($false))
-[IO.File]::WriteAllText((Join-Path $data 'studychat-pilot-guidance.json'), "{}`n", [Text.UTF8Encoding]::new($false))
+foreach ($name in @(
+    'collaboration-app.sqlite3.gz', 'collaboration-app.sqlite3.gz.sha256',
+    'collaboration-app.pseudonym-key', 'studychat-v1.1.snapshot.jsonl.gz',
+    'studychat-v1.1.provenance.json', 'studychat-v1.1.manifest.json',
+    'studychat-showcase-v1.json', 'studychat-pilot-guidance.json'
+)) {
+    $source = Join-Path $root "data/$name"
+    if (Test-Path -LiteralPath $source) { Copy-Item -LiteralPath $source -Destination $data }
+}
 
 $bundlePrefix = $bundle.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
 foreach ($cache in Get-ChildItem -LiteralPath $bundle -Recurse -Directory -Filter '__pycache__') {

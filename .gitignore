@@ -11,7 +11,4 @@ test-results/
 playwright-report/
 pytest-cache-files-*/
 *.exe
-/data/StudyChat/
-/data/studychat-v1.1.snapshot.jsonl.gz
 /data/studychat-v1.1.snapshot.jsonl.tmp
-/data/studychat-v1.1.provenance.json

@@ -16,12 +16,13 @@ if (-not $insideGit) {
     $tracked = @(& git ls-files)
     $forbidden = @(
         '(^|/)\.env$', '(^|/)var/', '\.(?:sqlite|sqlite3|db)(?:-|$|\.)', '\.exe$',
-        '^data/StudyChat/', '^data/studychat-v1\.1\.snapshot', '^data/studychat-v1\.1\.provenance\.json$',
+        '^data/StudyChat/',
         'browser-(?:teacher|student|admin)', '(?:^|/)service\.log$'
     )
     foreach ($path in $tracked) {
         if ($path -eq '.env.example') { continue }
-        if ($forbidden | Where-Object { $path -match $_ }) {
+        $allowedSnapshot = $path -in @('data/collaboration-app.sqlite3.gz', 'data/collaboration-app.sqlite3.gz.sha256')
+        if (-not $allowedSnapshot -and ($forbidden | Where-Object { $path -match $_ })) {
             $failures.Add("禁止公开的文件已被 Git 跟踪：$path")
         }
         if (Test-Path -LiteralPath $path -PathType Leaf) {

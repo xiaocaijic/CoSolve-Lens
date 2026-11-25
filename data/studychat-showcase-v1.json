@@ -1,1 +1,314 @@
-[]
+[
+  {
+    "id": "slime-feature-check",
+    "title": "F24 A4 · Equation of a Slime",
+    "theme": "错误诊断",
+    "hook": "从 X 的列数异常，到样本去掉目标列，再到调整后仍有警告。",
+    "finding": "学生报告了异常形状并改变了预测输入。全列被归到标签一侧的解释出现在 AI 回复里。学生随后报告警告仍在，现有记录还不能证明修正后的流程已通过验证。",
+    "exercise": "分别列出训练 X 的列名和预测样本的列名，核对顺序、名称与数量。",
+    "evidence": [
+      {
+        "sequence": 19,
+        "caption": "先记录异常形状"
+      },
+      {
+        "sequence": 20,
+        "caption": "分清 AI 的诊断和学生的观察"
+      },
+      {
+        "sequence": 33,
+        "caption": "检查调整后的预测输入"
+      },
+      {
+        "sequence": 35,
+        "caption": "追踪调整后的警告"
+      }
+    ],
+    "report_id": "4824d3462d9670cc626880f051c87a45",
+    "historical_report_id": "e38a3b5934a4cfc4908e8a8d9088d954",
+    "archive_key": "a381d3f4ce98685eb28b73477f02fbd5976f0901778dd343b6e2f31036b3e690",
+    "task": "F24 · A4"
+  },
+  {
+    "id": "bayes-condition",
+    "title": "F24 A6 · Bayes Complete",
+    "theme": "结果核验",
+    "hook": "同一个案例里，可以区分发现疑点、AI 给出修正、学生再次验算。",
+    "finding": "学生怀疑公式第二项有误并追问推导，具体条件方向由 AI 回复给出。学生随后指出字符 b 应出现 4 次，这是可核对的单项检查。",
+    "exercise": "用三个字符写出链式分解，标出每个条件来自哪个位置，再换一组字符独立核对第二项。",
+    "evidence": [
+      {
+        "sequence": 3,
+        "caption": "学生指出疑点"
+      },
+      {
+        "sequence": 4,
+        "caption": "AI 给出条件方向"
+      },
+      {
+        "sequence": 5,
+        "caption": "学生追问推导"
+      },
+      {
+        "sequence": 17,
+        "caption": "学生核对字符 b 的计数"
+      }
+    ],
+    "report_id": "fa900f33de92f477de2e2626cc2cc8a9",
+    "historical_report_id": "4d57296a0915e5a85cca869cd24a198a",
+    "archive_key": "7720ef87d76cc88c1e958f7dc9be0ab7baa0491a4d0223d5c8b6a6674acd25f0",
+    "task": "F24 · A6"
+  },
+  {
+    "id": "search-order-explanation",
+    "title": "S25 A2 · SearchComplete · 方案比较",
+    "theme": "方案比较",
+    "hook": "用「th」讲清 BFS、DFS 和 UCS 的排序差异，再问实际结果如何验证。",
+    "finding": "学生用同一个前缀解释按层、按分支和按代价排序，并说明了同代价时如何比较。材料尚未展示同一输入的完整可复验输出。",
+    "exercise": "用同一棵小树手算三种排序，再逐项和程序输出比对。",
+    "evidence": [
+      {
+        "sequence": 33,
+        "caption": "先确认输入与空前缀边界"
+      },
+      {
+        "sequence": 37,
+        "caption": "读 UCS 代价和平手规则"
+      },
+      {
+        "sequence": 39,
+        "caption": "比较 BFS 的输出顺序"
+      },
+      {
+        "sequence": 43,
+        "caption": "核对 UCS 的排序解释"
+      }
+    ],
+    "report_id": "03bf7bf971d65cc0c4bbc253c43f5ff6",
+    "historical_report_id": "49bf83c6b3e9434f63eb4621ea5ae077",
+    "archive_key": "c16ffd46c721b4ab8feb88c5fd97f19c681d84b1197244c91f46130bc2cb370a",
+    "task": "S25 · A2"
+  },
+  {
+    "id": "neural-test-data",
+    "title": "S25 A7 · Neural Complete · 结果核验",
+    "theme": "结果核验",
+    "hook": "指标看起来不错时，先追踪训练和测试的数据来源。",
+    "finding": "学生贴出的代码用 train_data 构建 test_dataset，又把 train_dataset 传给 test_loader。学生还比较了自述的训练与测试指标。只有先核对运行版本与测试数据来源，才能解释这些指标。",
+    "exercise": "画出 test_data → test_dataset → test_loader，再逐行标出代码实际传入了哪些变量。",
+    "evidence": [
+      {
+        "sequence": 11,
+        "caption": "学生缩小核对范围"
+      },
+      {
+        "sequence": 15,
+        "caption": "追踪测试数据流"
+      },
+      {
+        "sequence": 17,
+        "caption": "查看自述的训练和测试指标"
+      }
+    ],
+    "report_id": "357af31ab3f68da32c1352818f406ff4",
+    "historical_report_id": "da3ffb3dce183ceccf4e49f37cd22c3a",
+    "archive_key": "d7b0af735cdb1f9b22c0b75b072afb9006cb9e8c4484b2e8ffeef7cd0b0ce506",
+    "task": "S25 · A7"
+  },
+  {
+    "id": "documentary-timestamp",
+    "title": "F24 A1 · Future of Work",
+    "theme": "信息甄别",
+    "hook": "学生从宽泛描述缩小到「煤矿工人能否改训为程序员」的具体说法。",
+    "finding": "学生把线索问得更具体，AI 给出约 43:30–44:10，但该轮回复本身不能证明准确。课堂可练习将时间区间和原始字幕对齐。",
+    "exercise": "在字幕里定位相邻两句，记录原文和时间戳，再判断它是否支持转述。",
+    "evidence": [
+      {
+        "sequence": 13,
+        "caption": "初次请求定位原片"
+      },
+      {
+        "sequence": 17,
+        "caption": "把待查论点说具体"
+      },
+      {
+        "sequence": 18,
+        "caption": "核对 AI 给出的时间区间"
+      }
+    ],
+    "report_id": "a3b9ee858265074ade34a57d96c1cf06",
+    "archive_key": "871f7c050dc4689b2ba98b93024b461e0db092408a6d0783a0e99efe8c7d777a",
+    "task": "F24 · A1"
+  },
+  {
+    "id": "trie-heap",
+    "title": "F24 A2 · SearchComplete · 错误诊断",
+    "theme": "错误诊断",
+    "hook": "同一组前缀树记录里，能看到异常、AI 解释和后续代码版本。",
+    "finding": "学生报告了 Node 无法比较，AI 将问题定位到堆元组的比较顺序。后续学生贴出的堆元素已把前缀放在 Node 前面，记录没有提供修正后同代价输入的复跑结果。",
+    "exercise": "构造两个代价相同的候选项，检查第二字段是否能稳定给出平手顺序。",
+    "evidence": [
+      {
+        "sequence": 27,
+        "caption": "定位报错和原来元组结构"
+      },
+      {
+        "sequence": 28,
+        "caption": "对照 AI 的原因解释"
+      },
+      {
+        "sequence": 29,
+        "caption": "比较后续代码的字段顺序"
+      }
+    ],
+    "report_id": "7d7a3b3da4bef48ff879d49f8dd739bc",
+    "archive_key": "ecd74d0f1071431d772a7700b1439573a5ce87d1771d63310ccac4d30d788433",
+    "task": "F24 · A2"
+  },
+  {
+    "id": "bfs-expected-first",
+    "title": "S25 A2 · SearchComplete · 结果核验",
+    "theme": "结果核验",
+    "hook": "学生把「BFS 不对」改写成一个有输入、有期望输出的问题。",
+    "finding": "学生明确给出前缀 th 和期望词序，并说明现有实现不符合预期。AI 提出子节点访问顺序的解释，但是否修正仍需要同一输入复测。",
+    "exercise": "写一个断言把期望列表固定下来，改动后使用原词表再次运行。",
+    "evidence": [
+      {
+        "sequence": 3,
+        "caption": "找到共同的输入前缀"
+      },
+      {
+        "sequence": 5,
+        "caption": "学生给出期望顺序和实际偏差"
+      },
+      {
+        "sequence": 6,
+        "caption": "把 AI 的解释当作待检验假设"
+      }
+    ],
+    "report_id": "762555a6f6474a2ab78a2a16f1fe1744",
+    "archive_key": "f356cce05af3ba36d553bdf89c62d3493aa17fcaa8f65582cf8a27653777acf4",
+    "task": "S25 · A2"
+  },
+  {
+    "id": "cleaning-id-overlap",
+    "title": "F24 A3 · Data Cleaning and Preprocessing · 方案比较",
+    "theme": "方案比较",
+    "hook": "从比较 inner join 与 outer join，到用集合差直接找两边不共有的 ID。",
+    "finding": "两张表相差约十行，无法由此确定共有 ID 的数量。学生随后贴出双向集合差，提供了区分左表独有和右表独有的可复查做法。",
+    "exercise": "写出大小相同但交集为空的两组 ID，预测 inner join 和 outer join 的结果。",
+    "evidence": [
+      {
+        "sequence": 21,
+        "caption": "比较连接方式"
+      },
+      {
+        "sequence": 23,
+        "caption": "找出用行数差推断交集的假设"
+      },
+      {
+        "sequence": 25,
+        "caption": "用集合差直接检验"
+      }
+    ],
+    "archive_key": "fad870bb93e12bdc4050075c2b816a857f9a0eb10d2dd09781757012f27df486",
+    "task": "F24 · A3"
+  },
+  {
+    "id": "cleaning-target-column",
+    "title": "S25 A3 · Data Cleaning and Preprocessing · 策略调整",
+    "theme": "策略调整",
+    "hook": "从字段名异常，到修改后自述成功，再追问布尔分组的含义。",
+    "finding": "学生把分组字段从 Target 换成 Target_ckd，贴出了 False 和 True 两组计数，并解释自己仍不理解结果。这展示了从排错转向结果理解的提问变化。",
+    "exercise": "用三行自造数据手算每组计数，再比较 pandas 输出。",
+    "evidence": [
+      {
+        "sequence": 9,
+        "caption": "定位原异常和出错字段"
+      },
+      {
+        "sequence": 11,
+        "caption": "查看修改和输出"
+      },
+      {
+        "sequence": 13,
+        "caption": "观察学生转而请求简明解释"
+      }
+    ],
+    "archive_key": "8b1876b6baa921fe3579048e825a7f2438f5f90cb06909e3b85174954f36e435",
+    "task": "S25 · A3"
+  },
+  {
+    "id": "flower-index-and-columns",
+    "title": "F24 A5 · Judging Flowers",
+    "theme": "错误诊断",
+    "hook": "把 DataFrame 索引报错和模型特征名警告分开看。",
+    "finding": "学生先问 X_test[0] 为什么报错，随后报告 SVC 特征名警告。一个问题关系到取行或取列，另一个关系到训练与预测输入的格式一致性。",
+    "exercise": "用两行同名特征的数据，分别复现列索引错误和带／不带列名的输入差异。",
+    "evidence": [
+      {
+        "sequence": 7,
+        "caption": "区分取行与取列"
+      },
+      {
+        "sequence": 11,
+        "caption": "读取真实的特征名警告"
+      },
+      {
+        "sequence": 12,
+        "caption": "追踪训练与预测输入的数据类型"
+      }
+    ],
+    "archive_key": "b5477a28880256c59be363037956308481d1e838dc13c089666780e8e919b800",
+    "task": "F24 · A5"
+  },
+  {
+    "id": "ngram-done-claim",
+    "title": "S25 A6 · Bayes Complete",
+    "theme": "信息甄别",
+    "hook": "学生逐段贴出 n-gram 代码询问，到最后把局部答复当作完成判断的线索。",
+    "finding": "学生提供频率表、概率计算和预测下一个字符的代码，并询问作业是否完成。AI 给出总体肯定；现有这几轮没有展示逐项对照要求或未知前缀的测试。",
+    "exercise": "把“已贴给 AI 检查”和“有测试证明”列成两栏，为未知前缀补一个预期结果。",
+    "evidence": [
+      {
+        "sequence": 5,
+        "caption": "检查概率函数的审阅范围"
+      },
+      {
+        "sequence": 9,
+        "caption": "查看学生提出的整体完成问题"
+      },
+      {
+        "sequence": 10,
+        "caption": "辨析 AI 给出的完成判断"
+      }
+    ],
+    "report_id": "2f2d5667ea5d8a23981b606ea2a3b6f2",
+    "archive_key": "ef6dcb519676efebe1f375721da08544e5b806005d1e54c8df21cec0c08f99a8",
+    "task": "S25 · A6"
+  },
+  {
+    "id": "neural-temperature-stride",
+    "title": "S25 A7 · Neural Complete · 方案比较",
+    "theme": "方案比较",
+    "hook": "记录来自生成交互和训练数据切窗，适合讲实验变量与对照。",
+    "finding": "学生贴出了带温度输入的生成记录，后来追问 stride 的作用。温度作用于生成阶段的取样，而 stride 作用于构建训练用切窗；两者需要分别观察。",
+    "exercise": "固定模型比较两种生成温度。再固定数据与窗口长度，只改变 stride，数一数训练样本。",
+    "evidence": [
+      {
+        "sequence": 11,
+        "caption": "查看生成日志里的温度"
+      },
+      {
+        "sequence": 13,
+        "caption": "找到关于 stride 的追问"
+      },
+      {
+        "sequence": 14,
+        "caption": "把 stride 放回数据切窗的语境"
+      }
+    ],
+    "archive_key": "39074f4f652c01182ed4545d4e6677b48cf3b6e2bb4afa414a8d4be1f37da95b",
+    "task": "S25 · A7"
+  }
+]
